@@ -1,0 +1,37 @@
+<div *ngIf="review_data.data.length > 0" class="container mt-4">
+    <h1 class="text-white">Reviews &nbsp; <span class="my_muted_white">{{review_data.data.length}}</span></h1>
+    <div class="container-flex" *ngFor="let rev of review_data.data">
+        <div class="card mt-3" style="border-radius:6px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img [src]="rev.avatar_path" class="rounded-circle ml-2" style="width:80px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="pl-2 pr-2 pb-2">
+                            <h3 *ngIf="rev.first_line" >{{rev.first_line}} 
+                                    <span *ngIf="!small_screen" class="text-white rating_oval rounded-pill r_box" style="display:inline;margin-left:16px;">
+                                        <span class="star_sym" [innerHTML]="'&#9733;&nbsp;'"></span>
+                                        <span class="r_number align-top" >{{rev.rating}}</span>
+                                    </span>
+                                
+                            </h3>
+                            <div *ngIf="!small_screen" class="text-white rating_oval rounded-pill r_box">
+                                
+                            </div>
+                        <div *ngIf="small_screen" class="text-white rating_oval rounded-pill r_box">
+                            <p>
+                            <span class="star_sym" [innerHTML]="'&#9733;&nbsp;'"></span>
+                            <span class="r_number align-top" >{{rev.rating}}</span>
+                            </p>
+                        </div>
+                        <p *ngIf="rev.second_line" class="text-black-50 pt-4 pl-2 pr-4">{{rev.second_line}}</p>
+                        <p *ngIf="rev.content" class="pl-2  pr-4 review_box">{{rev.content}}</p>
+                        <a *ngIf="rev.url" class="pl-2 pr-4" [href]="rev.url" target="_blank">Read the rest</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

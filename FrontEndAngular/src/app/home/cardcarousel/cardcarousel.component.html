@@ -1,0 +1,42 @@
+<div *ngIf="non_empty && !small_screen">
+    <h1 *ngIf="show_rec && media_suffix" class='text-white'>Recommended {{media_suffix}}</h1>
+    <h1 *ngIf="show_sim && media_suffix" class='text-white'>Similar {{media_suffix}}</h1>
+    <ngb-carousel [interval]="0">
+        <ng-template ngbSlide *ngFor="let itemset of item_arr">
+            <div class="row pt-4 pb-5 pr-3 pl-3">
+                <div class="col-2 pb-3 my_card" *ngFor="let item of itemset">
+                    <a [routerLink]="'/watch/' + item.media_type + '/' + item.id" rel="nofollow noopener noreferrer"  >
+                        <div class="container-flex img_shell">
+                            <img class="img-fluid" src="{{item.poster_path}}">
+                            <div class="caption_box">
+                                <p class="my_caption"> {{item.title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+
+<div *ngIf="non_empty && small_screen">
+    <h1 *ngIf="show_rec && media_suffix" class='text-white'>Recommended {{media_suffix}}</h1>
+    <h1 *ngIf="show_sim && media_suffix" class='text-white'>Similar {{media_suffix}}</h1>
+    <ngb-carousel [interval]="0" [showNavigationIndicators]="false">
+        <ng-template ngbSlide *ngFor="let item of item_data">
+            <div class="row row-fluid pt-5 pb-5 mx-auto" style="padding-top:2%;padding-bottom:2%;padding-left:5%;padding-right:5%;">
+                <div class="mx-auto col-12 my_card">
+                    <a [routerLink]="'/watch/' + item.media_type + '/' + item.id" rel="nofollow noopener noreferrer"  >
+                        <div class="container-flex img_shell">
+                            <img class="img-fluid" src="{{item.poster_path}}">
+                            <div class="caption_box1">
+                                <p class="my_caption_small"> {{item.title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+

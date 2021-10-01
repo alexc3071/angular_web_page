@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div *ngIf="item_arr && !small_screen">
+        <div class="row col-10 mx-auto">
+            <h1 *ngIf="checkSContents()" class="text-white pb-3">My WatchList</h1>
+        </div>
+        <div class="row col-10 mx-auto" *ngFor="let itemset of item_arr">
+            <div class="col-2 pb-3 mt-5 my_card" *ngFor="let item of itemset">
+                <a [routerLink]="'/watch/' + item.media_type + '/' + item.id" rel="nofollow noopener noreferrer">
+                    <div class="container-flex img_shell">
+                        <img class="img-fluid" src="{{item.poster_path}}">
+                        <div class="caption_box">
+                            <p class="my_caption"> {{item.title}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="item_data && small_screen">
+        <div class="row col-11 pb-1 mx-auto">
+            <h1 *ngIf="checkSContents()" class="text-white pb-3">My WatchList</h1>
+        </div>
+        <div class="row row-fluid mx-auto" *ngFor="let item of item_data">
+            <div class="row row-fluid mx-auto" style="width:80%;padding-bottom:8%; padding-top:8%;">
+                <div class="mx-auto  my_card">
+                    <a [routerLink]="'/watch/' + item.media_type + '/' + item.id" rel="nofollow noopener noreferrer">
+                        <div class="container-flex img_shell">
+                            <img class="img-fluid" src="{{item.poster_path}}">
+                            <div class="caption_box1">
+                                <p class="my_caption_small"> {{item.title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 *ngIf="!checkSContents()" class="text-white text-center pt-5">No items found in Watchlist.</h1>
+</div>

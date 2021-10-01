@@ -1,0 +1,36 @@
+.my_muted_white{
+    color: #a8a8a8;
+}
+
+.my_semi_white{
+    color: #cccccc;
+}
+
+.title_text{
+    font-size:40px;
+    line-height: 46px;
+    margin:0px;
+}
+
+#genres_text{
+    margin-bottom: 0px;
+}
+
+#t_icon{
+    color: #1DA1F2;
+}
+#f_icon{
+    color: #171eff;
+}
+
+@media (max-width: 768px){
+    .desc_box{
+        width: 100%;
+        margin: 1%;
+     }
+  }
+  @media (min-width: 768px){
+    .desc_box{
+      width: 80%;
+    }
+  }

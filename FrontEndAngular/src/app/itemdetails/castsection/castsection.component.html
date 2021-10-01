@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div *ngIf="!small_screen && cast_list"  class="mx-auto container-flex col-10">
+    <h1 *ngIf="cast_list.length > 0" class="text-white"> Full Cast and Crew</h1>
+    <div *ngIf="cast_list.length > 0" class="row card-group flex-row flex-nowrap overflow-auto">
+        <div class="col-2 p-2" *ngFor="let cast of cast_list" (click)="showModal(cast.id, cast.profile_path, content)">
+            <div class="card cast_card ">
+                <img class="card-img-top m-0" [src]="cast.profile_path" alt="Card image cap" style="border-top-left-radius:12px; border-top-right-radius:12px;">
+                <div class="card-body pt-2 pb-2">
+                    <div class="card-text text-center pt-0 pb-0">
+                        <p *ngIf="cast.name" class="font-weight-bold cast_text m-0">{{cast.name}}</p>
+                        <p *ngIf="cast.character" class="font-weight-bold m-0">AS</p>
+                        <p *ngIf="cast.character" class="m-0 cast_text">{{cast.character}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="small_screen && cast_list"  class="container-flex mx-auto" style="width:92%;">
+    <h1 *ngIf="cast_list.length > 0" class="text-white pl-3 pr-3"> Full Cast and Crew</h1>
+    <div *ngIf="cast_list.length > 0" class="row card-group flex-row flex-nowrap overflow-auto">
+        <div class="col-6 p-4" *ngFor="let cast of cast_list" (click)="showModal(cast.id, cast.profile_path, content)">
+            <div class="card cast_card ">
+                <img class="card-img-top m-0" [src]="cast.profile_path" alt="Card image cap" style="border-top-left-radius:12px; border-top-right-radius:12px;">
+                <div class="card-body pt-2 pb-2">
+                    <div class="card-text text-center pt-0 pb-0">
+                        <p *ngIf="cast.name" class="font-weight-bold cast_text m-0">{{cast.name}}</p>
+                        <p *ngIf="cast.character" class="font-weight-bold m-0">AS</p>
+                        <p *ngIf="cast.character" class="m-0 cast_text">{{cast.character}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{p_data.name}}</h4>
+        <button type="button" class="close my_button" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body modal_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img [src]="p_profile_path" class="img-fluid">
+                </div>
+                <div class="col-sm-9">
+                    <p>
+                        <span *ngIf="p_data.birthday">
+                            {{p_data.birthday}}
+                            <br>
+                        </span>
+                        <span *ngIf="p_data.birth_place">
+                            {{p_data.birth_place}}
+                            <br>
+                        </span>
+                        <span *ngIf="p_data.gender">
+                            {{p_data.gender}}
+                            <br>
+                        </span>
+                        <span *ngIf="p_data.homepage">
+                            Website: <a target="_blank" [href]="p_data.homepage">{{p_data.homepage}}</a>
+                            <br>
+                        </span>
+                        <span *ngIf="p_data.known_for">
+                            {{p_data.known_for}}
+                            <br>
+                        </span>
+                        <span *ngIf="p_data.also_known_as">
+                            {{p_data.also_known_as}}
+                            <br>
+                        </span>
+                    </p>
+                    <div class="pt-0">
+                        <a *ngIf="p_data.imdb_url" ngbPopover="Visit IMDB" triggers="mouseenter" (mouseleave)="p.close()" #p="ngbPopover"  class="pr-2" target="_blank" [href]="p_data.imdb_url">
+                            <fa-icon [icon]="faImdb" style="font-size:26px;" id="i_icon"></fa-icon>
+                        </a>
+                        <a *ngIf="p_data.instagram_url"  ngbPopover="Visit Instagram" triggers="mouseenter" (mouseleave)="p.close()" #p="ngbPopover"  class="pr-2" target="_blank" [href]="p_data.instagram_url">
+                            <fa-icon [icon]="faInstagram" style="font-size:26px;" id="in_icon"></fa-icon>
+                        </a>
+                        <a *ngIf="p_data.facebook_url" ngbPopover="Visit Facebook"  triggers="mouseenter" (mouseleave)="p.close()" #p="ngbPopover" class="pr-2" target="_blank" [href]="p_data.facebook_url">
+                            <i class="fa fa-facebook-official" style="font-size:26px;" id="f_icon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="p_data.twitter_url" ngbPopover="Visit Twitter"  triggers="mouseenter" (mouseleave)="p.close()" #p="ngbPopover"  target="_blank" [href]="p_data.twitter_url">
+                            <fa-icon [icon]="faTwitter" style="font-size:26px;" id="t_icon"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="p_data.biography" class="flex-row pt-3">
+                <h3>Biography</h3>
+                <p>{{p_data.biography}} </p>
+            </div>
+            
+        </div>
+    </div>
+</ng-template>

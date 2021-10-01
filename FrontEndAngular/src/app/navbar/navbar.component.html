@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-md sticky-top navbar-dark mb-3" style="background-color: #030c20;">
+  <a class="navbar-brand pl-4 pr-1" [routerLink]="''">USC Films</a>
+
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item pr-3" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="''" (click)="isMenuCollapsed = true">Home</a>
+      </li>
+      <li class="nav-item pr-3" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/mylist'" (click)="isMenuCollapsed = true">My List</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item pr-5">
+        <!-- Add search here -->
+        <ng-template class="results_template" #rt let-r="result" let-t="term">
+          <img [src]="r.backdrop_path" style="width: 100px">
+          <ngb-highlight class="text-white pl-3" [result]="r.name" [term]="t"></ngb-highlight>
+
+        </ng-template>
+
+        <input id="typeahead-template" type="text" placeholder="Search" class="form-control my_input" #input
+          [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter"
+          (selectItem)="page_jump($event, input);"/>
+
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,18 @@
+<div>
+    <div>
+    <app-detailssection *ngIf="item_details" [item_data]="item_details"></app-detailssection>
+    </div>
+</div>
+<div>
+    <app-castsection *ngIf="cast_details" [cast_data]="cast_details"></app-castsection>
+</div>
+<div>
+    <app-reviewsection *ngIf="review_details" [review_data]="review_details"></app-reviewsection>
+</div>
+
+<div class="mx-auto mt-5" style="width:75vw;">
+    <app-cardcarousel [path_suffix]="rec_suffix"></app-cardcarousel>
+</div>
+<div class="mx-auto mt-5" style="width:75vw;">
+    <app-cardcarousel [path_suffix]="sim_suffix"></app-cardcarousel>
+</div>

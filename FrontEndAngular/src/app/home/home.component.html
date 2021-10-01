@@ -1,0 +1,25 @@
+<div class="mx-auto" style="width:80%;">
+        <app-largecarousel></app-largecarousel>
+</div>
+
+<div class="mx-auto mt-5" style="width:80%;">
+        <h1 *ngIf="is_continue" class='text-white'>Continue Watching</h1>
+        <app-cardcarousel [path_suffix]="'current'"></app-cardcarousel>
+
+        <h1 class='text-white'>Popular Movies</h1>
+        <app-cardcarousel [path_suffix]="'popularmovies'"></app-cardcarousel>
+        <h1 class='text-white'>Top Rated Movies</h1>
+        
+        <app-cardcarousel [path_suffix]="'topmovies'"></app-cardcarousel>
+        <h1 class='text-white'>Trending Movies</h1>
+        
+        <app-cardcarousel [path_suffix]="'trendingmovies'"></app-cardcarousel>
+        <h1 class='text-white'>Popular TV Shows</h1>
+        
+        <app-cardcarousel [path_suffix]="'populartv'"></app-cardcarousel>
+        <h1 class='text-white'>Top Rated TV Shows</h1>
+        
+        <app-cardcarousel [path_suffix]="'toptv'"></app-cardcarousel>
+        <h1 class='text-white'>Trending TV Shows</h1>
+        <app-cardcarousel [path_suffix]="'trendingtv'"></app-cardcarousel>
+</div>

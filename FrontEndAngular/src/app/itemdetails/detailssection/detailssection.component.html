@@ -1,0 +1,56 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0"
+    nonce="VrPcgwPZ"></script>
+
+
+<div class="container-fluid">
+    <div class="row mx-auto pb-2 desc_box">
+        <div class="col-md-8">
+            <div class="embed-responsive embed-responsive-16by9 pb-4">
+                <youtube-player videoId={{video_key}}></youtube-player>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p *ngIf="title" class="text-white title_text mt-0 pt-0 mb-0 pb-2">{{title}}</p>
+            <p *ngIf="tagline" class="my_semi_white mt-0 pt-0" style="font-size:18px"><i>{{tagline}}</i></p>
+            <p *ngIf="numbers_line" class="my_semi_white mb-0 pb-1" style="font-size:18px" [innerHTML]="numbers_line">
+            </p>
+            <p *ngIf="genres" class="text-white" id="genres_text">Genres: <span class="my_muted_white">{{genres}}</span>
+            </p>
+            <p *ngIf="spoken_languages" class="text-white">Spoken Languages: <span
+                    class="my_muted_white">{{spoken_languages}}</span></p>
+            <button (click)="toggle_watchlist()" type="button" class="btn btn-primary">{{button_text}}</button>
+            <ngb-alert #selfClosingAlert1 class="mt-3" *ngIf="successMessage" type="success"
+                (closed)="successMessage = ''">{{ successMessage }}</ngb-alert>
+            <ngb-alert #selfClosingAlert2 class="mt-3" *ngIf="warningMessage" type="danger"
+                (closed)="warningMessage = ''">{{ warningMessage }}</ngb-alert>
+
+        </div>
+    </div>
+    <div *ngIf="overview" class="row mx-auto desc_box">
+        <div class="pt-1 pl-3 pr-4">
+            <p class="text-white mt-1 mb-1" style="font-size:18px;">Description</p>
+            <p class="my_muted_white pt-0 mt-0">{{overview}}</p>
+        </div>
+    </div>
+    <div class="row mx-auto desc_box">
+        <div class="pl-3 pr-4">
+            <p class="text-white mb-0" style="font-size:18px;">Share</p>
+        </div>
+    </div>
+    <div class="row mx-auto desc_box">
+        <div class="pl-3 pr-4 pb-5">
+            <a class="twitter-share-button pr-2" hashtags="USC" target="_blank" [href]="twitter_content">
+                <fa-icon [icon]="faTwitter" style="font-size:22px;" id="t_icon"></fa-icon>
+            </a>
+            <a target="_blank"
+                [href]="facebook_content"
+                class= "fb-xfbml-parse-ignore">
+                <fa-icon [icon]="faFacebook" style="font-size:22px;" id="f_icon"></fa-icon>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>

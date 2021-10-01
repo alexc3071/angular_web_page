@@ -1,0 +1,11 @@
+
+# [START app_yaml]
+runtime: nodejs14 
+handlers:
+  - url: /(.*\.(js|css|svg|png)(|\.map))$
+    static_files: dist/myapp/\1
+    upload: dist/myapp/(.*)(|\.map)
+  - url: /.*
+    static_files: dist/myapp/index.html
+    upload: dist/myapp/.*
+# [END app_yaml]

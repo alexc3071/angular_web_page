@@ -1,0 +1,43 @@
+<div *ngIf="!small_screen" class="container-flex mx-auto" style="width:85%;">
+  <ngb-carousel id="l_carousel" #carousel [interval]="5000" (slide)="onSlide($event)">
+    <ng-template ngbSlide  *ngFor="let img of images; index as i">
+      <div class="row-fluid pt-3 pr-0 pl-0 mx-auto"  style="padding-top:1%;padding-bottom:1%">
+        <div class="mx-auto pb-0 pt-0 p-0 col-12 my_card">
+          <a routerLink="{{h_links[i]}}" rel="nofollow noopener noreferrer">
+            <div>
+              <div class="container-flex img_shell">
+                <img class="img-fluid" [src]="img">
+                <div class="caption_box_large">
+                  <p class="text-white capt_large"> {{titles[i]}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+  <div *ngIf="small_screen" class="container-flex">
+    <ngb-carousel id="l_carousel" #carousel [interval]="5000" [showNavigationIndicators]="false" (slide)="onSlide($event)">
+      <ng-template ngbSlide  *ngFor="let img of images; index as i">
+        <div class="row-fluid mx-auto" style="padding-top:1%;">
+          <div class="mx-auto pb-0 pt-0 p-0 col-12 my_card">
+            <a routerLink="{{h_links[i]}}" rel="nofollow noopener noreferrer">
+              <div>
+                <div class="container-flex img_shell">
+                  <img class="img-fluid" [src]="img">
+                  <div class="caption_box_small">
+                    <p class="text-white capt_small"> {{titles[i]}}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  
